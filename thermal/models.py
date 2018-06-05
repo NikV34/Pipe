@@ -39,7 +39,7 @@ class Geometry(models.Model):
         return [field.name for field in self._meta.get_fields()[:-2]]
 
     def __str__(self):
-        return "%s %s" % (self.id, self.sector)
+        return "%s %s" % (self.geometry_id, self.sector)
 
     class Meta:
         verbose_name = 'Участок'
