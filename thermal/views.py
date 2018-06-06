@@ -3,6 +3,7 @@ from .forms import GeometryForm, ConditionForm
 import sqlite3
 from .models import Geometry
 
+
 def update_project(col, condition, project_id):
     conn = sqlite3.connect('db.sqlite3')
     cursor = conn.cursor()

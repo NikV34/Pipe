@@ -3,9 +3,17 @@
 {% block thermal_link %}
     <li class="navbar__link-active">
 {% endblock thermal_link %}
-{% block content %}
-    <h1>Начать теплотехнический расчет</h1>
+{% block main-banner__title %}
+    <h1 class="main-banner__card-title">Начать расчет</h1>
+    <span class="main-banner__card-description"> Теплотехнчиеский расчет выполняется за 3 шага:</span>
+    <ul class="main-banner__card-description">
+        <li>- ввод геометрических характеристик ствола;</li>
+        <li>- ввод температурных показателей;</li>
+        <li>- вывод результатов расчета</li>
+    </ul>
+{% endblock main-banner__title %}
+{% block main-banner__content %}
     <form method="POST">{% csrf_token %}
-        <button type="submit" class="btn btn-primary" name="create_project">Создать проект</button>
+        <button type="submit" class="button-main" name="create_project">Сделать расчет</button>
     </form>
-{% endblock content %}
+{% endblock main-banner__content %}

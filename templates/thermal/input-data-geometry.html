@@ -1,27 +1,12 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Теплотехнический расчет</title>
-
-    <!-- Bootstrap -->
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
+{% block thermal_link %}
+    <li class="navbar__link-active">
+{% endblock thermal_link %}
+{% block title %}Геометрические характеристики дымовой трубы{% endblock title %}
+{% block main %}
     <div class="container">
-        <h1>Геометрические характеристики дымовой трубы</h1>
+        <h1 class="main-banner__page-title" >Геометрические характеристики ствола</h1>
         <form method="post">{% csrf_token %}
             <div class="main-field__wrapper form-inline">
                 <div class="form-group">
@@ -36,7 +21,7 @@
                 </div>
             </div>
 
-            <div class="form-group form-inline">
+            <div class="form-group form-inline detail-field__checkbox">
                 <input type="checkbox" checked disabled id="skeleton" data-toggle="collapse" data-target="#collapseSkeleton" aria-expanded="false" aria-controls="collapseSkeleton">
                 <label for="skeleton">Несущий ствол</label>
             </div>
@@ -71,7 +56,7 @@
                 </div>
             </div>
 
-            <div class="form-group form-inline">
+            <div class="form-group form-inline detail-field__checkbox">
                 <input type="checkbox" id="clamp" data-toggle="collapse" data-target="#collapseClamp" aria-expanded="false" aria-controls="collapseClamp">
                 <label for="clamp">Прижимная футеровка</label>
             </div>
@@ -106,7 +91,7 @@
                 </div>
             </div>
 
-            <div class="form-group form-inline">
+            <div class="form-group form-inline detail-field__checkbox">
                 <input type="checkbox" id="air" data-toggle="collapse" data-target="#collapseAir" aria-expanded="false" aria-controls="collapseAir">
                 <label for="air">Воздушный зазор</label>
             </div>
@@ -141,7 +126,7 @@
                 </div>
             </div>
             
-            <div class="form-group form-inline">
+            <div class="form-group form-inline detail-field__checkbox">
                 <input type="checkbox" id="insulation" data-toggle="collapse" data-target="#collapseInsulation" aria-expanded="false" aria-controls="collapseInsulation">
                 <label for="insulation">Теплоизоляция</label>
             </div>
@@ -176,7 +161,7 @@
                 </div>
             </div>
             
-            <div class="form-group form-inline">
+            <div class="form-group form-inline detail-field__checkbox">
                 <input type="checkbox" id="lining" data-toggle="collapse" data-target="#collapseLining" aria-expanded="false" aria-controls="collapseLining">
                 <label for="lining">Футеровка</label>
             </div>
@@ -210,33 +195,37 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Сохранить</button>
-            <a class="btn btn-primary" href="../input-data-thermal/{{ project_id }}">Далее</a>
+            <div class="page__buttons-wrapper">
+                <button type="submit" class="button-main">Применить</button>
+                <a href="../input-data-thermal/{{ project_id }}">
+                    <button type="button" class="button-accent">Далее</button>
+                </a>
+            </div>
         </form>
-        <div class="row">
-            <div class="col-md-2">
-                {% for l in headline_list %}
-                    <p>{{ l }}</p>
-                {% endfor %}
+            <div class="row page__geometry-wrapper">
+                <div class="col-md-2 page__geometry-headline-wrapper">
+                    {% if colomns_data %}
+                    {% for l in headline_list %}
+                        <div class="page__geometry-headline">{{ l }}</div>
+                    {% endfor %}
+                {% endif %}
+                </div>
+            {% for o in colomns_data %}
+                <div class="col-md-1 page__geometry-result-wrapper">
+                    {% for i in o %}
+                        {% if i %}
+                            <div class="page__geometry-result">{{ i }}</div>
+                        {% else %}
+                            <div class="page__geometry-result">0</div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endfor %}
             </div>
-        {% for o in colomns_data %}
-            <div class="col-md-1">
-                {% for i in o %}
-                    {% if i %}
-                        <p>{{ i }}</p>
-                    {% else %}
-                        <p>0</p>
-                    {% endif %}
-                {% endfor %}
-            </div>
-        {% endfor %}
         </div>
     </div>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-
+{% endblock main %}
+{% block script %}
     <script>
         var param = $("input[id*='id_']");
         function calculate_radius(numberInput) {
@@ -269,5 +258,4 @@
             }
         });
     </script>
-  </body>
-</html>
+{% endblock script %}

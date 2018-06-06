@@ -1,5 +1,6 @@
 .navbar__wrapper {
     background-color: #252c33;
+    margin-bottom: 30px;
 }
 
 .navbar-header__wrapper {
@@ -8,7 +9,7 @@
 
 a.navbar-brand__link {
     font-size: 18px;
-    color: #df622b;
+    color: #f75b01;
     text-decoration: none;
 }
 
@@ -22,26 +23,188 @@ li.navbar__link>a.navbar__link-text {
     text-decoration: none;
 }
 
-li.navbar__link:hover, li.navbar__link-active {
-    padding-bottom: 0;
+li.navbar__link-active {
+    border-bottom: 3px solid #f75b01;
+}
+
+li.navbar__link-active>a.navbar__link-text {
+    color: #fff;
+    padding-bottom: 12px;
 }
 
 li.navbar__link>a.navbar__link-text:hover,
 li.navbar__link>a.navbar__link-text:focus,
-li.navbar__link-active>a.navbar__link-text,
 li.navbar__link-active>a.navbar__link-text:hover,
-li.navbar__link-active>a.navbar__link-text:focus{
-    color: #fff;
-    padding-bottom: 12px;
-    border-bottom: 3px solid #df622b;
+li.navbar__link-active>a.navbar__link-text:focus {
+    color: #f75b01;
 }
 
-h1 {
-    color: #df622b;
+.main-banner__wrapper {
+    height: 500px;
+    background: url('../media/pipe_images/main-banner.jpg') no-repeat center/cover;
+    position: relative;
+}
+
+.main-banner__card-wrapper {
+    position: absolute;
+    max-width: 470px;
+    left: 10%;
+    top: 10%;
+    background-color: rgba(247, 91, 1, 0.9);
+    text-align: left;
+    padding: 30px 20px;
+}
+
+.main-banner__card-title {
+    color: #fff;
+    font-size: 48px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 600;
+    text-transform: uppercase;
+    margin: 0 auto;
+}
+
+ul{
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+li.main-banner__card-item {
+    display: block;
+    position: relative;
+    padding-top: 10px;
+}
+
+a.main-banner__card-text {
+    color: #fff;
+    font-size: 24px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.main-banner__card-arrow {
+    background: url("../media/pipe_images/icon-arrow.svg");
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    right: 100px;
+    top: 13px;
+}
+
+span.main-banner__card-description {
+    display: block;
+    margin-top: 10px;
+}
+
+ul.main-banner__card-description {
+    margin-bottom: 20px;
+}
+
+.main-banner__card-description {
+    color: #fff;
+    font-size: 18px;
+}
+
+.page__buttons-wrapper {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.page__buttons-wrapper button {
+    margin-right: 10px;
+}
+
+.button-main {
+    padding: 10px 20px;
+    background-color: #252c33;
+    border: none;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.button-accent {
+    padding: 10px 20px;
+    background-color: #f75b01;
+    border: none;
+    color: #000;
+    text-transform: uppercase;
+}
+
+.main-banner__page-title {
+    color: #f75b01;
+    font-size: 36px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.form-control:focus, .form-control:hover {
+    border-color: #f75b01;
+}
+
+.main-field__wrapper {
+    margin-bottom: 10px;
+}
+
+.detail-field__checkbox {
+    margin-bottom: 5px;
 }
 
 .detail-field__wrapper {
-    border: 1px solid #1b6d85;
+    padding-top: 10px;
+    margin-bottom: 10px;
+    border-top:#eae5e5 solid 1px;
+    border-bottom: #eae5e5 solid 1px;
+}
+
+.page__geometry-wrapper {
+    font-size: 12px;
+}
+
+.page__geometry-headline-wrapper {
+    padding-right: 1px;
+}
+
+.page__geometry-headline {
+    font-weight: 600;
+    margin-bottom: 0;
+    padding: 5px 0 5px 15px;
+}
+
+.page__geometry-headline:nth-child(2n) {
+}
+
+.page__geometry-headline:nth-child(2n+1) {
+    background-color: rgba(247, 91, 1, 0.5);
+}
+
+.page__geometry-result-wrapper {
+    padding: 0 1px;
+}
+
+.page__geometry-result {
+    text-align: center;
+    margin-bottom: 0;
+    padding: 5px 0;
+}
+
+.page__geometry-result:nth-child(2n+1) {
+    background-color: rgba(247, 91, 1, 0.5);
+}
+
+.page__result-headline {
+    font-weight: 600;
+    padding: 0 1px;
+    font-size: 12px;
+    height: 70px;
+    vertical-align: middle;
+    border: 1px solid rgba(247, 91, 1, 0.5);
+}
+
+.page__result-text:nth-child(2n+1) {
+    border: 1px solid #fff;
+    background-color: rgba(247, 91, 1, 0.5);
 }

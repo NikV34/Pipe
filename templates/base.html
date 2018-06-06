@@ -1,56 +1,79 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>{% block title %}Все расчеты дымовых труб{% endblock %}</title>
-    <!-- Bootstrap -->
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>{% block title %}Все расчеты дымовых труб{% endblock %}</title>
+        <!-- Bootstrap -->
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="navbar navbar-default navbar__wrapper">
-        <div class="container">
-            <div class="navbar-header navbar-header__wrapper">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="icon-bar">Теплотехнический</span>
-                    <span class="icon-bar">Аэродинамический</span>
-                </button>
-                <a class="navbar-brand__link" href="/">Brand</a>
-            </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav">
-                {% block thermal_link %}
-                <li class="navbar__link">
-                {% endblock thermal_link %}
-                    <a class="navbar__link-text" href="../thermal">Теплотехнический</a>
-                </li>
-                <li class="navbar__link">
-                    <a class="navbar__link-text" href="#">Аэродинамический</a>
-                </li>
-              </ul>
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="navbar navbar-default navbar__wrapper">
+            <div class="container">
+                <div class="navbar-header navbar-header__wrapper">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="icon-bar">Теплотехнический</span>
+                        <span class="icon-bar">Аэродинамический</span>
+                    </button>
+                    <a class="navbar-brand__link" href="/">Brand</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav">
+                    {% block thermal_link %}
+                    <li class="navbar__link">
+                    {% endblock thermal_link %}
+                        <a class="navbar__link-text" href="../thermal">Теплотехнический</a>
+                    </li>
+                    <li class="navbar__link">
+                        <a class="navbar__link-text" href="#">Аэродинамический</a>
+                    </li>
+                  </ul>
+                </div>
             </div>
         </div>
-    </div>
-  <div class="container">
-      {% block content %}
-        <h1>Виды расчетов</h1>
-        <a href="thermal/" class="button">Перейти к теплотехническому расчету</a>
-        {% endblock %}
-  </div>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-  </body>
+        {% block main %}
+            <div class="container-fluid main-banner__wrapper">
+                <div class="main-banner__card-wrapper">
+                    {% block main-banner__title %}
+                        <h1 class="main-banner__card-title">HEADLINE</h1>
+                    {% endblock main-banner__title %}
+                    {% block main-banner__content %}
+                        <ul>
+                            <li class="main-banner__card-item">
+                                <a href="thermal/" class="main-banner__card-text">Теплотехнический
+                                    <span class="main-banner__card-arrow"></span>
+                                </a>
+                                <p class="main-banner__card-description">Поверочный расчет для определения температурных
+                                    характеристик конструкций ствола дымовой трубы</p>
+                            </li>
+                            <li class="main-banner__card-item">
+                                <a href="aerodynamic/" class="main-banner__card-text">Аэродинамический
+                                    <span class="main-banner__card-arrow"></span>
+                                </a>
+                                <p class="main-banner__card-description">Поверочный расчет для определения аэродинамических
+                                    характеристик ствола дымовой трубы</p>
+                            </li>
+                        </ul>
+                    {% endblock main-banner__content %}
+                </div>
+            </div>
+        {% endblock main %}
+        {% block main-content %}
+        {% endblock main-content %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        {% block script %}
+        {% endblock script %}
+    </body>
 </html>
