@@ -14,7 +14,6 @@ def update_project(col, condition, project_id):
 
 
 def index(request):
-    print("REQ", request)
     if request.method == "POST":
         conn = sqlite3.connect('db.sqlite3')
         cursor = conn.cursor()
@@ -30,7 +29,6 @@ def list_input_data_geometry(project_id):
     conn = sqlite3.connect('db.sqlite3')
     cursor = conn.cursor()
     sektor_list = cursor.execute("SELECT * FROM thermal_geometry where project_id=%s" % project_id).fetchall()
-    # cursor.execute("UPDATE thermal_geometry SET %s = %s WHERE sector = %s" % (col, round(value, 2), sec))
     conn.commit()
     conn.close()
     if sektor_list:
@@ -49,11 +47,8 @@ def interpol(field, value, col):
     cursor = conn.cursor()
     min_row = cursor.execute('SELECT * FROM thermal_data WHERE %s <= %s' % (field, value)).fetchall()[-1]
     max_row = cursor.execute('SELECT * FROM thermal_data WHERE %s >= %s' % (field, value)).fetchall()[0]
-    # cursor.execute("UPDATE thermal_geometry SET %s = %s WHERE sector = %s" % (col, round(value, 2), sec))
     conn.commit()
     conn.close()
-    #print(min_row)
-    #print(max_row)
     if min_row == max_row:
         return min_row[col]
     else:
@@ -94,9 +89,8 @@ def input_data_geometry(request, project_id):
                     post.save()
     else:
         form = GeometryForm()
-    colomns_data = [i[2:-2] for i in list_input_data_geometry(project_id)]
-    colomns = len(colomns_data) + 1
-    #headline_list = headline_list_name()
+    columns_data = [i[2:-2] for i in list_input_data_geometry(project_id)]
+    columns = len(columns_data) + 1
     headline_list = ["Номер участка",
                      "Отметка низа, м",
                      "Толщина ствола, мм",
@@ -170,7 +164,6 @@ def result_thermal(request, project_id, volume_gas, current_temperature_gas, cur
             input_list['current_temperature_gas'] = int(round(input_list['current_temperature_gas']
                                                         - (input_list['bottom_mark'] - bottom_mark) * 0.4, 0))
             bottom_mark = input_list['bottom_mark']
-        #print(input_list)
         for radius in [input_list['skeleton_radius_inner'], input_list['clamp_lining_radius_inner'],
                        input_list['air_radius_inner'], input_list['insulation_radius_inner'],
                        input_list['lining_radius_inner']]:
@@ -250,9 +243,9 @@ def result_thermal(request, project_id, volume_gas, current_temperature_gas, cur
                        'Температура футеровки снаружи, °С',
                        'Температура футеровки внутри, °С'
                        ]
-    result_colomn = {}
+    result_column = {}
     for key, value in result.items():
-        result_colomn[key] = [value['sector'],
+        result_column[key] = [value['sector'],
                               value['bottom_mark'],
                               value['skeleton_outer_temperature'],
                               value['skeleton_inner_temperature'],
@@ -261,5 +254,4 @@ def result_thermal(request, project_id, volume_gas, current_temperature_gas, cur
                               value['lining_outer_temperature'],
                               value['lining_inner_temperature'],
                               ]
-    #update_project('result_id', post.condition_id, project_id)
     return render(request, 'thermal/result-thermal.html', locals())

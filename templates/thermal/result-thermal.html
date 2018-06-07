@@ -5,14 +5,14 @@
 {% endblock thermal_link %}
 {% block title %}Эксплуатационные показатели дымовой трубы{% endblock title %}
 {% block main %}
-    <div class="container">
+    <div class="container page-height-control">
         <h1 class="main-banner__page-title" >Результаты теплотехнического расчета</h1>
         <div class="row">
             {% for head in headline_result %}
                 <div class="col-md-1 text-center page__result-headline">{{ head }}</div>
             {% endfor %}
         </div>
-        {% for k, v in result_colomn.items  %}
+        {% for k, v in result_column.items  %}
             <div class="row page__result-wrapper">
             {% for value in v %}
                 <div class="col-md-1 text-center page__result-text">{{ value }}</div>

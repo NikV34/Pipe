@@ -208,3 +208,32 @@ ul.main-banner__card-description {
     border: 1px solid #fff;
     background-color: rgba(247, 91, 1, 0.5);
 }
+
+.page-footer__wrapper {
+    margin-top: 30px;
+    background-color: #252c33;
+    height: 150px;
+}
+
+.page-footer__title {
+    color: #fff;
+    font-size: 32px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 30px auto 20px 50px;
+}
+
+.page-footer__text {
+    margin-left: 50px;
+    color: #fff;
+}
+
+a.page-footer__email {
+    color: #f75b01;
+    text-decoration: none;
+}
+
+.page-height-control {
+    min-height: 500px;
+}

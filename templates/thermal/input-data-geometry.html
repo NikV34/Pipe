@@ -5,13 +5,13 @@
 {% endblock thermal_link %}
 {% block title %}Геометрические характеристики дымовой трубы{% endblock title %}
 {% block main %}
-    <div class="container">
+    <div class="container page-height-control">
         <h1 class="main-banner__page-title" >Геометрические характеристики ствола</h1>
         <form method="post">{% csrf_token %}
             <div class="main-field__wrapper form-inline">
                 <div class="form-group">
                     <label for="{{ form.sector.id_for_label }}">Номер участка снизу:</label>
-                    <input class="form-control" type="number" min="0" step="1" title="Максимум 10 участков" value="{{ colomns }}" name="{{ form.sector.name }}"
+                    <input class="form-control" type="number" min="0" step="1" title="Максимум 10 участков" value="{{ columns }}" name="{{ form.sector.name }}"
                            id="main_{{ form.sector.name }}">
                 </div>
                 <div class="form-group">
@@ -204,13 +204,13 @@
         </form>
             <div class="row page__geometry-wrapper">
                 <div class="col-md-2 page__geometry-headline-wrapper">
-                    {% if colomns_data %}
+                    {% if columns_data %}
                     {% for l in headline_list %}
                         <div class="page__geometry-headline">{{ l }}</div>
                     {% endfor %}
                 {% endif %}
                 </div>
-            {% for o in colomns_data %}
+            {% for o in columns_data %}
                 <div class="col-md-1 page__geometry-result-wrapper">
                     {% for i in o %}
                         {% if i %}
